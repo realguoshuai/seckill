@@ -1,4 +1,7 @@
 # seckill
-SSM+bootstrap
-运行效果:
-![](https://github.com/realguoshuai/hadoop_study/blob/master/hadoop%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/hadoop/index.jpg)
+#### 使用SSM+bootstrap框架 和 mysql数据库 实现一个商品秒杀的功能模块
+#### 主要功能 包括 模糊查询  分页  排序
+
+## 运行效果:
+
+![](https://github.com/realguoshuai/seckill/blob/master/%E8%BF%90%E8%A1%8C%E6%95%88%E6%9E%9C.png)
