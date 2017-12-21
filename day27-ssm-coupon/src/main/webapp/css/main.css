@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: rgb(245, 244, 243);
+}
+
+.container {
+	padding-top: 50px;
+}
+
+.goods-cell {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+.goods-cell-container {
+	background-color: white;
+}
+
+.goods-cell-container-image {
+	
+}
+
+.goods-cell-container-name {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.goods-cell-container-seckill-cell {
+
+}
+
+.goods-cell-container-seckill {
+
+	border-style: solid;
+	border-width: 1px;
+	border-color: #E01222;
+	margin: 0px;
+}
+
+.goods-cell-container-seckill-price {
+	color: #E01222;
+	font-size: 36px;
+}
+
+.goods-cell-container-seckill-price-icon {
+	font-size: 18px;
+}
+
+.goods-cell-container-seckill-seckill {
+	margin-top: 30px;
+}
+
+
+
+
+
+

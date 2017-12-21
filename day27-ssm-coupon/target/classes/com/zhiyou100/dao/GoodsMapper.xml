@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhiyou100.dao.GoodsDao">
+
+	<select id="listGoods" resultType="goodsDO">
+		SELECT
+		id
+		, name
+		, info
+		, image
+		, count
+		, price
+		, begin_time
+		, end_time
+		FROM
+		goods
+		<where>
+			<if test="keywords != null">
+				<foreach collection="keywords" item="kw">
+					OR name LIKE '%${kw}%'
+				</foreach>
+			</if>
+		</where>
+		<if test="count != null">
+			ORDER BY count
+			<if test="count">
+				DESC
+			</if>
+		</if>
+		LIMIT ${index}, 5
+	</select>
+
+	<select id="countGoods" resultType="int">
+		SELECT
+		count(*)
+		FROM
+		goods
+		<where>
+			<if test="keywords != null">
+				<foreach collection="keywords" item="kw">
+					OR name LIKE '%${kw}%'
+				</foreach>
+			</if>
+		</where>
+		<if test="count != null">
+			ORDER BY count
+			<if test="count">
+				DESC
+			</if>
+		</if>
+	</select>
+
+	<resultMap type="goodsDO" id="listGoods">
+
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="info" column="info" />
+		<result property="image" column="image" />
+		<result property="count" column="goods_count" />
+		<result property="price" column="price" />
+		<result property="beginTime" column="begin_time" />
+		<result property="endTime" column="end_time" />
+
+		<collection property="userGoods" ofType="com.zhiyou100.entity.UserGoodsDO">
+			<result property="count" column="user_goods_count" />
+			<result property="time" column="time" />
+
+			<association property="user" javaType="userDO">
+				<result property="email" column="email" />
+			</association>
+		</collection>
+
+	</resultMap>
+
+	<!-- 使用左连接保证即使没有购买记录也查询出商品信息 -->
+	<select id="getGoods" resultMap="listGoods">
+		SELECT
+		g.id
+		, g.name
+		, g.info
+		, g.image
+		, g.count goods_count
+		, g.price
+		, g.begin_time
+		, g.end_time
+		, ug.count user_goods_count
+		, ug.time
+		, u.email
+		FROM
+		goods g
+		left join user_goods ug on g.id = ug.goods_id
+		left join user u on u.id = ug.user_id
+		WHERE
+		g.id = #{_parameter}
+	</select>
+
+	<update id="subGoodsCount">
+		UPDATE ignore
+		goods
+		SET
+		count = count - #{arg1}
+		WHERE
+		id = #{arg0}
+		AND count >= #{arg1}
+	</update>
+</mapper>
