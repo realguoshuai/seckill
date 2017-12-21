@@ -1,4 +1,4 @@
 # seckill
 SSM+bootstrap
 运行效果:
-![](https://github.com/realguoshuai/hadoop_study/blob/master/hadoop%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/hadoop/index.jpg)
+![](https://github.com/realguoshuai/seckill/blob/master/%E8%BF%90%E8%A1%8C%E6%95%88%E6%9E%9C.png)
